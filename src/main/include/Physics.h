@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Game.h"
+
+#include "Shooter.h"
+
 #include "frc/smartdashboard/SmartDashboard.h"
 
 class Physics{
@@ -10,5 +13,6 @@ public:
     static double getHeight(double);
     static double getTime(double, double, double);
     static double getShotRPM(double);
-    static bool checkDistance(double, double);
+    static bool farEnough(double, double);
+
 };

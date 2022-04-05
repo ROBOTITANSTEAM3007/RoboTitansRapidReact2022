@@ -3,20 +3,29 @@
 #define offset_height 0.00//The vertical offset of the goal(cm)
 #define offset_distance 0.00//The horizontal offset of the goal(cm)
 
-#define cam_height 0.00//Height of camera from the floor(cm)
-#define exit_height 0.00//Height of the shot origin from the floor(cm)
 
-#define cam_distance 0.00//Distance from the back of the bot to the camera(cm)
-#define exit_distance 0.00//Distance from the back of the bot to the shot exit(cm)
+#define cam_height 55.88//Height of camera from the floor(cm)
+#define exit_height 81.28//Height of the shot origin from the floor(cm)
+
+#define cam_distance 45.72//Distance from the back of the bot to the camera(cm)
+#define exit_distance 22.86//Distance from the back of the bot to the shot exit(cm)
+
 
 #define top_goal 264.00/*Height of the UPPER goal from the floor(cm)*/
 #define low_goal 104.00/*Height of the LOWER goal from the floor(cm)*/
 
-#define cam_angle 0.00/*Angle of camera(degrees)*/ * (PI/180)
-#define exit_angle 75.00 /*Angle of the shooter(degrees)*/ * (PI/180)
 
-#define ball_diameter 24.00//Diameter of the ball(cm)
-#define wheel_diameter 15.24//Diameter of the shooting wheel(cm)
+#define cam_angle 27.00/*Angle of camera(degrees)*/ * deg_to_rad
+#define exit_angle 60.00 /*Angle of the shooter(degrees)*/ * deg_to_rad
 
-#define gravity 980.7//Gravity(cm/s/s)
+#define ball_diameter 0.2400//Diameter of the ball(m)
+#define wheel_diameter 0.1524//Diameter of the shooting wheel(m)
+
+#define wheel_distance 0.6604//Distance between the left and right wheels(m)
+
+#define rps_to_rpm 1 / (2*PI) * 60
+#define deg_to_rad PI/180
+
+#define gravity 9.807//Gravity(m/s/s)
+
 #define PI 3.141592653589793//PI
