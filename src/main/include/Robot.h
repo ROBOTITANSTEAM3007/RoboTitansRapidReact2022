@@ -71,7 +71,10 @@ class Robot : public frc::TimedRobot {
 
   //Joystick Constants
   unsigned const short joyStickDeadzone = 0.1;
-  unsigned const short controlStickSensitivty = 0.75;
+// <<<<<<< Test
+// =======
+//   unsigned const short controlStickSensitivty = 0.75;
+// >>>>>>> Test
 
   //Motor Constants
   unsigned const short intakeMotorSpeed = 1;
@@ -93,11 +96,14 @@ class Robot : public frc::TimedRobot {
   frc::DifferentialDrive m_robotDrive{m_leftDriveMotor, m_rightDriveMotor};
 
   //PID Controller Objects
-  rev::SparkMaxPIDController m_leftPidController = m_leftDriveMotor.GetPIDController();
-  rev::SparkMaxPIDController m_rightPidController = m_rightDriveMotor.GetPIDController();
-  rev::SparkMaxRelativeEncoder m_leftEncoder = m_leftDriveMotor.GetEncoder();
-  rev::SparkMaxRelativeEncoder m_rightEncoder = m_rightDriveMotor.GetEncoder();
-  // frc::PIDController m_drivePidController = m_robotDrive;
+// <<<<<<< Test
+// =======
+//   rev::SparkMaxPIDController m_leftPidController = m_leftDriveMotor.GetPIDController();
+//   rev::SparkMaxPIDController m_rightPidController = m_rightDriveMotor.GetPIDController();
+//   rev::SparkMaxRelativeEncoder m_leftEncoder = m_leftDriveMotor.GetEncoder();
+//   rev::SparkMaxRelativeEncoder m_rightEncoder = m_rightDriveMotor.GetEncoder();
+//   // frc::PIDController m_drivePidController = m_robotDrive;
+// >>>>>>> Test
   rev::SparkMaxPIDController m_pidController = m_shootMotor.GetPIDController();
   rev::SparkMaxRelativeEncoder m_encoder = m_shootMotor.GetEncoder();
 
