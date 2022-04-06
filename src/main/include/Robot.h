@@ -7,27 +7,27 @@
 
 #pragma once
 
-#include <frc/Joystick.h>
-#include <rev/CANSparkMax.h>
-#include <frc/drive/DifferentialDrive.h>
-#include <iostream>
-#include <frc/DigitalInput.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <frc/PneumaticsControlModule.h>
-#include <frc/Compressor.h>
-#include <frc/motorcontrol/Spark.h>
-#include <frc/Solenoid.h>
-#include <frc/DigitalInput.h>
-#include <fstream>
 #include "Debug.h"
+
+#include <fstream>
+#include <iostream>
+
 #include <frc/TimedRobot.h>
+
 #include <frc/smartdashboard/SendableChooser.h>
+#include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/PneumaticsControlModule.h>
+#include <frc/motorcontrol/Spark.h>
+#include <frc/DigitalInput.h>
+#include <frc/Compressor.h>
+#include <frc/Solenoid.h>
+#include <frc/Joystick.h>
+
 #include <rev/CANPIDController.h>
 #include <rev/CANSparkMax.h>
-#include <frc2/command/button/JoystickButton.h>
-#include <frc2/command/StartEndCommand.h>
 
-
+#include <cameraserver/CameraServer.h>
 
 class Robot : public frc::TimedRobot {
  public:
@@ -42,12 +42,13 @@ class Robot : public frc::TimedRobot {
   void DisabledPeriodic() override;
 
   void onShotRequest(double);
+  void onDriveRequest();
   
   //Pin Variables
   
   //Joystick Pins
-  unsigned const short driveJoystickID = 0;
-  unsigned const short controlJoystickID = 1;
+  unsigned const short driveJoystickID = 1;
+  unsigned const short climbJoystickID = 0;
 
   //Spark Pins
   unsigned const short rightDriveMotorID = 1; //Default 1
@@ -57,21 +58,25 @@ class Robot : public frc::TimedRobot {
   unsigned const short indexMotorID = 1; //Default 1
   unsigned const short intakeMotorID = 6; //Default 6
 
-  //Button Variables
-  
+  unsigned const short compressorID = 0; //Default 0
 
+  //Button Variables
   unsigned const short shootHighButtonID = 1; //Default 6
-  unsigned const short shootLowButtonID = 5; //Default 5
 
   unsigned const short cameraButtonID = 7; //Default 7
   unsigned const short indexButtonID = 4; //Default 4
-  unsigned const short intakeButtonID = 3; //Default 8
+  unsigned const short intakeButtonID = 3; //Default 3
+
+  unsigned const short increaseButtonID = 5; //Default 5
+  unsigned const short decreaseButtonID = 4; //Default 5
+
+  unsigned const short climbButtonID = 8; //Default 8
+
 
   //Constants
 
   //Joystick Constants
   unsigned const short joyStickDeadzone = 0.1;
-  unsigned const short controlStickSensitivty = 0.75;
 
   //Motor Constants
   unsigned const short intakeMotorSpeed = 1;
@@ -93,21 +98,15 @@ class Robot : public frc::TimedRobot {
   frc::DifferentialDrive m_robotDrive{m_leftDriveMotor, m_rightDriveMotor};
 
   //PID Controller Objects
-  rev::SparkMaxPIDController m_leftPidController = m_leftDriveMotor.GetPIDController();
-  rev::SparkMaxPIDController m_rightPidController = m_rightDriveMotor.GetPIDController();
-  rev::SparkMaxRelativeEncoder m_leftEncoder = m_leftDriveMotor.GetEncoder();
-  rev::SparkMaxRelativeEncoder m_rightEncoder = m_rightDriveMotor.GetEncoder();
-  // frc::PIDController m_drivePidController = m_robotDrive;
   rev::SparkMaxPIDController m_pidController = m_shootMotor.GetPIDController();
   rev::SparkMaxRelativeEncoder m_encoder = m_shootMotor.GetEncoder();
 
   //Joystick Objects
-  frc::Joystick m_controlStick{controlJoystickID};
+  frc::Joystick m_climbStick{climbJoystickID};
   frc::Joystick m_driveStick{driveJoystickID};
 
   //Pneumatics Objects
-  frc::Compressor m_compressor{0, frc::PneumaticsModuleType::CTREPCM};
-
+  frc::Compressor m_compressor{compressorID, frc::PneumaticsModuleType::CTREPCM};
 
  private:
   frc::SendableChooser<std::string> m_chooser;
