@@ -4,10 +4,10 @@
 #define offset_distance 0.00//The horizontal offset of the goal(cm)
 
 
-#define cam_height 55.88//Height of camera from the floor(cm)
+#define cam_height 58.42//Height of camera from the floor(cm)
 #define exit_height 81.28//Height of the shot origin from the floor(cm)
 
-#define cam_distance 45.72//Distance from the back of the bot to the camera(cm)
+#define cam_distance 49.53//Distance from the back of the bot to the camera(cm)
 #define exit_distance 22.86//Distance from the back of the bot to the shot exit(cm)
 
 
@@ -15,7 +15,7 @@
 #define low_goal 104.00/*Height of the LOWER goal from the floor(cm)*/
 
 
-#define cam_angle 27.00/*Angle of camera(degrees)*/ * deg_to_rad
+#define cam_angle 26.00/*Angle of camera(degrees)(originally 27)*/ * deg_to_rad
 #define exit_angle 60.00 /*Angle of the shooter(degrees)*/ * deg_to_rad
 
 #define ball_diameter 0.2400//Diameter of the ball(m)

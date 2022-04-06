@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Robot.h"
+
 #include <frc/Joystick.h>
 #include "rev/CANSparkMax.h"
 #include <frc/drive/DifferentialDrive.h>
@@ -38,7 +39,7 @@ class climb {
         static unsigned const short climbingMotorID = 4;
         rev::CANSparkMax m_climbingMotor{climbingMotorID, rev::CANSparkMax::MotorType::kBrushless};
 
-                rev::SparkMaxRelativeEncoder m_encoder = m_climbingMotor.GetEncoder();
+                rev::SparkMaxRelativeEncoder m_climbEncoder = m_climbingMotor.GetEncoder();
         
         //Instantiate a group solenoids for pneumatic control
         frc::Solenoid m_grab1{frc::PneumaticsModuleType::CTREPCM, 0};

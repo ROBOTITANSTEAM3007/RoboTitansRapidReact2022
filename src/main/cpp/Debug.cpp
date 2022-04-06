@@ -5,7 +5,7 @@
 using namespace std;
 
 
-dbg::dbg(std::string y = "/home/lvuser/DEBUG.txt") {
+dbg::dbg(std::string y) {
     file.open(y);
     iterations = 0;
     if(!file.is_open()) {

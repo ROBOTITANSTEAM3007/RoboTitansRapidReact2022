@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <iostream>
 #include "Game.h"
 #include "Physics.h"
@@ -16,15 +15,17 @@
 
 #define motorMaxRPM 4000 //Motor max RPM (The fastest the motor can spin)
 #define rpmThreshold 10
-#define driveProportion 0.125
-#define minAdjustment -0.3
-#define maxAdjustment 0.3
+#define driveProportion 0.1
+#define minAdjustment -0.25
+#define maxAdjustment 0.25
 #define shotThreshold 1
 #define minDrivePower 0.5
 
 #define shotDistance 240 // in cm
 #define distanceThreshold 10 // in cm
 #define alignThreshold 1 //in degrees
+
+#define manualIncrement 500 // in RPM
 
 #define alignSpeed 0.3
 #define RPMScalar 1.4
