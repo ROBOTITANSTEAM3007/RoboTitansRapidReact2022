@@ -29,12 +29,6 @@ double feedForwardPIDConstant = 0;
 double kMaxOutput = 1.0;
 double kMinOutput = -1.0;
 
-//Align Variables
-double horizontalOffset = 0;
-double turnPosition = 0; //In degrees
-double leftTurnGoal = 0;
-double rightTurnGoal = 0;
-
 //Boolean Variables
 bool indexActive = false;
 bool intakeActive = false;
@@ -44,10 +38,10 @@ bool manualShooter = false;
 
 double autoSteps = 0;
 
-void Robot::onDriveRequest(){
+void Robot::onDriveRequest(double sensitivity = Robot::driveStickSensitivity){
   //Drive Robot
   if (abs(m_driveStick.GetTwist()) >= joyStickDeadzone || abs(m_driveStick.GetY()) >= joyStickDeadzone) {
-    m_robotDrive.ArcadeDrive(m_driveStick.GetTwist(), -m_driveStick.GetY());
+    m_robotDrive.ArcadeDrive(m_driveStick.GetTwist() * sensitivity, -m_driveStick.GetY() * sensitivity);
   }
 }
 
@@ -63,6 +57,7 @@ void Robot::onShotRequest(double goalHeight){
     double steeringAdjust = 0;
     steeringAdjust = Shooter::alignTarget();
     
+    double horizontalOffset = 0;
     horizontalOffset = Limelight::getInfo("tx");
     
     frc::SmartDashboard::PutNumber("Steering Adjust", 0);
@@ -124,7 +119,7 @@ void Robot::RobotInit() {
   frc::SmartDashboard::PutBoolean("Toggled Camera", false);
 
   frc::SmartDashboard::PutBoolean("intakeActive", intakeActive);
-  frc::SmartDashboard::PutBoolean("indexActive", indexActive);
+  frc::SmartDashboard::PutBoolean("indexActive", indexActive); 
   frc::SmartDashboard::PutNumber("Steering Adjust", 0);
 
   //Custom debug class records debug log in /home/lvuser/DEBUG.txt
@@ -225,7 +220,7 @@ void Robot::TeleopPeriodic() {
   }
   
   if (climbActive) {
-    onDriveRequest();
+    onDriveRequest(climbStickSensitivity);
     climbObject.doClimb(&m_climbStick);
   } else {
     //Shooting

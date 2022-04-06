@@ -42,7 +42,7 @@ class Robot : public frc::TimedRobot {
   void DisabledPeriodic() override;
 
   void onShotRequest(double);
-  void onDriveRequest();
+  void onDriveRequest(double);
   
   //Pin Variables
   
@@ -76,11 +76,14 @@ class Robot : public frc::TimedRobot {
   //Constants
 
   //Joystick Constants
-  unsigned const short joyStickDeadzone = 0.1;
+  const double joyStickDeadzone = 0.1;
+
+  const double climbStickSensitivity = 0.5;
+  static inline double driveStickSensitivity = 1;
 
   //Motor Constants
-  unsigned const short intakeMotorSpeed = 1;
-  unsigned const short indexMotorSpeed = 1;
+  const double intakeMotorSpeed = 1;
+  const double indexMotorSpeed = 1;
 
   //Define Objects
 
